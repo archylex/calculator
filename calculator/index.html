@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset=utf-8>
+    <title>Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+    <script src="calc.js"></script>
+</head>
+<body>
+    <div class="intro">
+        <div class="container">
+            <div class="inner_intro">
+                <h1>Scientific Calculator</h1>
+                <div class="calc">
+                    <div class="display">
+                        <input class="mem-number" id="mem-number" type="text" value="" autocomplete="off" readonly>
+                        <input class="entry-number" id="entry-number" type="text" value="0" autocomplete="off" readonly>
+                    </div>
+                    <div class="keys" id="keys">
+                        <div class="digits">
+                            <div class="row">
+                                <div class="column">
+                                    <div class="round_digit_button">CE</div>
+                                    <div class="digit_button" id="7">7</div>
+                                    <div class="digit_button" id="4">4</div>
+                                    <div class="digit_button">1</div>
+                                    <div class="round_digit_button left_bottom_corner">.</div>
+                                </div>
+                                <div class="column">
+                                    <div class="round_digit_button">C</div>
+                                    <div class="digit_button">8</div>
+                                    <div class="digit_button">5</div>
+                                    <div class="digit_button">2</div>
+                                    <div class="digit_button">0</div>
+                                </div>
+                                <div class="column">
+                                    <div class="round_digit_button">&#9003;</div>
+                                    <div class="digit_button">9</div>
+                                    <div class="digit_button">6</div>
+                                    <div class="digit_button"">3</div>
+                                    <div class="round_digit_button">&#177;</div>
+                                </div>
+                                <div class="column">
+                                    <div class="round_digit_button" data-calc="main-arithmetic">&#247;</div>
+                                    <div class="round_digit_button" data-calc="main-arithmetic">&#215;</div>
+                                    <div class="round_digit_button" data-calc="main-arithmetic">&#8722;</div>
+                                    <div class="round_digit_button" data-calc="main-arithmetic">&#43;</div>
+                                    <div class="round_digit_button" data-calc="equal">&#61;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="functions">
+                            <div class="row">
+                                <div class="column">
+                                    <div class="func_button" data-calc="function">n!</div>
+                                    <div class="func_button" data-calc="function">sin</div>
+                                    <div class="func_button" data-calc="function">lg</div>
+                                    <div class="func_button" data-calc="const">&pi;</div>
+                                    <div class="func_button" data-calc="bracket">(</div>
+                                </div>
+                                <div class="column">
+                                    <div class="func_button">x&#8319;</div>
+                                    <div class="func_button" data-calc="function">cos</div>
+                                    <div class="func_button" data-calc="function">ln</div>
+                                    <div class="func_button" data-calc="const"><em>e</em></div>
+                                    <div class="func_button" data-calc="bracket">)</div>
+                                </div>
+                                <div class="column">
+                                    <div class="func_button" data-calc="function">&#8730;</div>
+                                    <div class="func_button" data-calc="function">tan</div>
+                                    <div class="func_button" data-calc="function">log2</div>
+                                    <div class="func_button" data-calc="const">γ</div>
+                                    <div class="func_button right_bottom_corner" data-calc="const">φ</em></div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <h3>2020 GNU GPL v.3 Archylex</h3>               
+            </div> 
+        </div>
+    </div>
+</body>
+</html>
