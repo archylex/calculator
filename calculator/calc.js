@@ -14,22 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isNaN(key)) 
             entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
            
-        switch (keyData) {
-            case 'const':
-                entryNumber.value = key;
-                break;
-            case 'bracket':
-                if (key === '(') {
-                    brackets++; 
-                    memNumber.value += key;                        
-                } else {
-                    if (brackets > 0 && memNumber.value.slice(-1) !== ')') {
-                        brackets--;
-                        memNumber.value += entryNumber.value + key;
-                    }                
-                }                           
-                entryNumber.value = '0'; 
-                break;
+        switch (keyData) {            
             case 'main-arithmetic':
                 if (isAnswer) {
                     memNumber.value = '';
@@ -71,6 +56,21 @@ document.addEventListener('DOMContentLoaded', function() {
                         entryNumber.value = res.toString();                
                     isAnswer = true;
                 }
+                break;
+            case 'const':
+                entryNumber.value = key;
+                break;
+            case 'bracket':
+                if (key === '(') {
+                    brackets++; 
+                    memNumber.value += key;                        
+                } else {
+                    if (brackets > 0 && memNumber.value.slice(-1) !== ')') {
+                        brackets--;
+                        memNumber.value += entryNumber.value + key;
+                    }                
+                }                           
+                entryNumber.value = '0'; 
                 break;
             default:
                 break;
