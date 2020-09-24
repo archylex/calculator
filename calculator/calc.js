@@ -51,9 +51,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                    
                 isPrefix = true;
                             
-                if (key === '√' && entryNumber.value === '0')
+                if (key === '√' && entryNumber.value === '0') {
                     memNumber.value += key;
-                else if (key === 'n!')
+                    isPrefix = false;
+                } else if (key === 'n!')
                     memNumber.value += entryNumber.value + '!';
                 else
                     memNumber.value += key === 'log2' ? 'log' + entryNumber.value : key + entryNumber.value;                        
