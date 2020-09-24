@@ -35,6 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     memNumber.value = '';
                     isAnswer = false;    
                 }    
+                
+                if (entryNumber.value.length > 12) {
+                    entryNumber.value = 'The number is too big!';
+                    return;
+                }
+                
                 if (memNumber.value.slice(-1) === ')' || isPrefix) {
                     memNumber.value += key;                      
                     isPrefix = false;
@@ -46,6 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (isAnswer) {
                     memNumber.value = '';
                     isAnswer = false;    
+                }
+                
+                if (entryNumber.value.length > 12) {
+                    entryNumber.value = 'The number is too big!';
+                    return;
                 }
     
                 isPrefix = true;
