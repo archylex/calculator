@@ -15,11 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
            
         switch (keyData) {            
-            case 'main-arithmetic':
-                if (entryNumber.value.length > 12) {
-                    entryNumber.value = 'The number is too big!';
-                    return;
-                }
+            case 'main-arithmetic':                
                 if (isAnswer) {
                     memNumber.value = '';
                     isAnswer = false;    
@@ -36,12 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     memNumber.value = '';
                     isAnswer = false;    
                 }
-                
-                if (entryNumber.value.length > 12) {
-                    entryNumber.value = 'The number is too big!';
-                    return;
-                }
-    
+                                    
                 isPrefix = true;
                             
                 if (key === '√' && entryNumber.value === '0')
