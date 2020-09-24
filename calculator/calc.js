@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         switch (key) {
             case 'CE':
                 entryNumber.value = '0';
+                isAnswer = false;
                 break;
             case 'C':
                 entryNumber.value = '0';
@@ -102,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     memNumber.value += entryNumber.value + '^';                        
                     entryNumber.value = '0';
                 } else memNumber.value += '^'; 
+                isAnswer = false;
                 break;           
             default:
                 return;        
