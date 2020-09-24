@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'C':
                 entryNumber.value = '0';
                 memNumber.value = '';
+                isAnswer = false;
                 break;
             case '⌫':                
                 const n = entryNumber.value.includes('-') ? 2 : 1;
