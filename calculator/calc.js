@@ -35,17 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     memNumber.value = '';
                     isAnswer = false;    
                 }    
-                
-                if (entryNumber.value.length > 12) {
-                    entryNumber.value = 'The number is too big!';
-                    return;
-                }
-                
+                                
                 if (memNumber.value.slice(-1) === ')' || isPrefix) {
                     memNumber.value += key;                      
                     isPrefix = false;
-                } else
-                    memNumber.value += entryNumber.value + key;                            
+                } else memNumber.value += entryNumber.value + key;   
+                
                 entryNumber.value = '0';            
                 break;
             case 'function':
@@ -53,12 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     memNumber.value = '';
                     isAnswer = false;    
                 }
-                
-                if (entryNumber.value.length > 12) {
-                    entryNumber.value = 'The number is too big!';
-                    return;
-                }
-    
+                                   
                 isPrefix = true;
                             
                 if (key === '√' && entryNumber.value === '0')
