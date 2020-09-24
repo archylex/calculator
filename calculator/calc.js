@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
            
         switch (keyData) {            
             case 'main-arithmetic':
+                if (entryNumber.value.length > 12) {
+                    entryNumber.value = 'The number is too big!';
+                    return;
+                }
                 if (isAnswer) {
                     memNumber.value = '';
                     isAnswer = false;    
@@ -31,6 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (isAnswer) {
                     memNumber.value = '';
                     isAnswer = false;    
+                }
+                
+                if (entryNumber.value.length > 12) {
+                    entryNumber.value = 'The number is too big!';
+                    return;
                 }
     
                 isPrefix = true;
