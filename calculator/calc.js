@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (!isNaN(key)) { 
-            if (isAnswer) 
+            if (isAnswer) {
                 clearAll();
                 entryNumber.value = key;
-            else 
+            } else 
                 entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
         }
            
