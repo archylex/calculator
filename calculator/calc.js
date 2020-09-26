@@ -11,20 +11,41 @@ document.addEventListener('DOMContentLoaded', function() {
         const key = event.target.textContent;
         const keyData = event.target.getAttribute('data-calc');
         
-        if (!isNaN(key)) 
-            entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
+        if (!isNaN(key)) { 
+            if (isAnswer) {
+                entryNumber.value = key;
+                memNumber.value = '';
+                isAnswer = false;
+            } else entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
+        }
            
-        switch (keyData) {            
-            case 'main-arithmetic':                
+        switch (keyData) {
+            case 'const':
+                entryNumber.value = key;
+                break;
+            case 'bracket':
+                if (key === '(') {
+                    brackets++; 
+                    memNumber.value += key;                        
+                } else {
+                    if (brackets > 0 && memNumber.value.slice(-1) !== ')') {
+                        brackets--;
+                        memNumber.value += entryNumber.value + key;
+                    }                
+                }                           
+                entryNumber.value = '0'; 
+                break;
+            case 'main-arithmetic':
                 if (isAnswer) {
                     memNumber.value = '';
                     isAnswer = false;    
                 }    
+                                
                 if (memNumber.value.slice(-1) === ')' || isPrefix) {
                     memNumber.value += key;                      
                     isPrefix = false;
-                } else
-                    memNumber.value += entryNumber.value + key;                            
+                } else memNumber.value += entryNumber.value + key;   
+                
                 entryNumber.value = '0';            
                 break;
             case 'function':
@@ -32,12 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     memNumber.value = '';
                     isAnswer = false;    
                 }
-                                    
+                                   
                 isPrefix = true;
                             
-                if (key === '√' && entryNumber.value === '0')
+                if (key === '√' && entryNumber.value === '0') {
                     memNumber.value += key;
-                else if (key === 'n!')
+                    isPrefix = false;
+                } else if (key === 'n!')
                     memNumber.value += entryNumber.value + '!';
                 else
                     memNumber.value += key === 'log2' ? 'log' + entryNumber.value : key + entryNumber.value;                        
@@ -57,21 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     isAnswer = true;
                 }
                 break;
-            case 'const':
-                entryNumber.value = key;
-                break;
-            case 'bracket':
-                if (key === '(') {
-                    brackets++; 
-                    memNumber.value += key;                        
-                } else {
-                    if (brackets > 0 && memNumber.value.slice(-1) !== ')') {
-                        brackets--;
-                        memNumber.value += entryNumber.value + key;
-                    }                
-                }                           
-                entryNumber.value = '0'; 
-                break;
             default:
                 break;
         }
@@ -79,10 +86,12 @@ document.addEventListener('DOMContentLoaded', function() {
         switch (key) {
             case 'CE':
                 entryNumber.value = '0';
+                isAnswer = false;
                 break;
             case 'C':
                 entryNumber.value = '0';
                 memNumber.value = '';
+                isAnswer = false;
                 break;
             case '⌫':                
                 const n = entryNumber.value.includes('-') ? 2 : 1;
@@ -100,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     memNumber.value += entryNumber.value + '^';                        
                     entryNumber.value = '0';
                 } else memNumber.value += '^'; 
+                isAnswer = false;
                 break;           
             default:
                 return;        
