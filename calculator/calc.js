@@ -11,12 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const key = event.target.textContent;
         const keyData = event.target.getAttribute('data-calc');
         
+        const clearAll = () => {
+            entryNumber.value = '0';
+            memNumber.value = '';
+            isAnswer = false;
+        }
+        
         if (!isNaN(key)) { 
-            if (isAnswer) {
-                entryNumber.value = key;
-                memNumber.value = '';
-                isAnswer = false;
-            } else entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
+            if (isAnswer) 
+                clearAll();
+            else 
+                entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
         }
            
         switch (keyData) {
@@ -89,9 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 isAnswer = false;
                 break;
             case 'C':
-                entryNumber.value = '0';
-                memNumber.value = '';
-                isAnswer = false;
+                clearAll();
                 break;
             case '⌫':                
                 const n = entryNumber.value.includes('-') ? 2 : 1;
