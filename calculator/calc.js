@@ -11,8 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const key = event.target.textContent;
         const keyData = event.target.getAttribute('data-calc');
         
-        if (!isNaN(key)) 
-            entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
+        if (!isNaN(key)) { 
+            if (isAnswer) {
+                entryNumber.value = key;
+                isAnswer = false;
+            } else entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
+        }
            
         switch (keyData) {
             case 'const':
