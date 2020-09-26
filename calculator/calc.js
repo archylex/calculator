@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isNaN(key)) { 
             if (isAnswer) 
                 clearAll();
+                entryNumber.value = key;
             else 
                 entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
         }
