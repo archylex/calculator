@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isNaN(key)) { 
             if (isAnswer) {
                 entryNumber.value = key;
+                memNumber.value = '';
                 isAnswer = false;
             } else entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
         }
