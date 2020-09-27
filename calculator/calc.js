@@ -139,11 +139,11 @@ const fraction = (a, b, o) => {
     
     switch (o) {
         case '+':
-            return Number((a + b).toFixed(decA.length + decB.length)).toString();                  
+            return (Number(a) + Number(b)).toFixed(decA.length + decB.length)).toString();                  
         case '-':
-            return Number((a - b).toFixed(decA.length + decB.length)).toString();
+            return (Number(a) + Number(b)).toFixed(decA.length + decB.length)).toString();
         case '*':
-            return Number((a * b).toFixed(decA.length + decB.length)).toString();
+            return (Number(a) + Number(b)).toFixed(decA.length + decB.length)).toString();
     }
 }
 
