@@ -276,7 +276,7 @@ const computeRPN = exp => {
                     stack.push(fraction(a, b, '+'));
                     break;
                 case '−':                                        
-                    stack.push(fraction(a, b, '-'));
+                    stack.push(fraction(b, a, '-'));
                     break;
                 case '×':
                     stack.push(fraction(a, b, '*'));
