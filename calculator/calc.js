@@ -141,9 +141,9 @@ const fraction = (a, b, o) => {
         case '+':
             return Number((Number(a) + Number(b)).toFixed(decA.length + decB.length)).toString();                  
         case '-':
-            return Number((Number(a) + Number(b)).toFixed(decA.length + decB.length)).toString();
+            return Number((Number(a) - Number(b)).toFixed(decA.length + decB.length)).toString();
         case '*':
-            return Number((Number(a) + Number(b)).toFixed(decA.length + decB.length)).toString();
+            return Number((Number(a) * Number(b)).toFixed(decA.length + decB.length)).toString();
     }
 }
 
