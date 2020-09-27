@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const factorial = n => n ? n * factorial(n - 1) : 1;
 
-const fraction = (a, b) => {
+const fraction = (a, b, o) => {
     a = isNaN(a) || !isFinite(a) || a == '0' ? '0.0' : a.toString();
     b = isNaN(b) || !isFinite(b) || b == '0' ? '0.0' : b.toString();
 
@@ -145,7 +145,12 @@ const fraction = (a, b) => {
     const signA = a.slice(0, 1) === '-' ? -1 : 1;
     const signB = b.slice(0, 1) === '-' ? -1 : 1;
 
-    return ((Number(intA) * signA * x + Number(decA)) * y * signA + (Number(intB) * signB * y + Number(decB)) * x * signB) / x / y; 
+    if (o === '+')
+        return ((Number(intA) * signA * x + Number(decA)) * y * signA + (Number(intB) * signB * y + Number(decB)) * x * signB) / x / y; 
+    else if (o === '-')
+        return ((Number(intA) * signA * x + Number(decA)) * y * signA - (Number(intB) * signB * y + Number(decB)) * x * signB) / x / y; 
+    else
+        return (Number(a) * Number(b)).toFixed(decA.length + decB.length);
 }
 
 const clearArray = a => a.filter(e => e != null && e !== '' && e !== ' ');
@@ -274,14 +279,13 @@ const computeRPN = exp => {
                             
             switch (exp[i]) {
                 case '+':                        
-                    stack.push(fraction(a, b));
+                    stack.push(fraction(a, b, '+'));
                     break;
-                case '−':                    
-                    a = a.toString().slice(0, 1) === '-' || 0 ? a.slice(1) : `-${a}`;
-                    stack.push(fraction(a, b));
+                case '−':                                        
+                    stack.push(fraction(a, b, '-'));
                     break;
                 case '×':
-                    stack.push(Number(a) * Number(b));
+                    stack.push(fraction(a, b, '*'));
                     break;
                 case '÷':
                     stack.push(Number(b) / Number(a));
