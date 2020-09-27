@@ -134,23 +134,17 @@ const fraction = (a, b, o) => {
     a = isNaN(a) || !isFinite(a) || a == '0' ? '0.0' : a.toString();
     b = isNaN(b) || !isFinite(b) || b == '0' ? '0.0' : b.toString();
 
-    let [intA, decA] = a.split('.');
-    let [intB, decB] = b.split('.');        
-
-    if (decA === undefined) decA = '';     
-    if (decB === undefined) decB = '';
-
-    const x = Math.pow(10, decA.length);
-    const y = Math.pow(10, decB.length);
-    const signA = a.slice(0, 1) === '-' ? -1 : 1;
-    const signB = b.slice(0, 1) === '-' ? -1 : 1;
-
-    if (o === '+')
-        return ((Number(intA) * signA * x + Number(decA)) * y * signA + (Number(intB) * signB * y + Number(decB)) * x * signB) / x / y; 
-    else if (o === '-')
-        return ((Number(intA) * signA * x + Number(decA)) * y * signA - (Number(intB) * signB * y + Number(decB)) * x * signB) / x / y; 
-    else
-        return (Number(a) * Number(b)).toFixed(decA.length + decB.length);
+    let decA = a.split('.')[1] || '';
+    let decB = b.split('.')[1] || '';        
+    
+    switch (o) {
+        case '+':
+            return Number((a + b).toFixed(decA.length + decB.length)).toString();                  
+        case '-':
+            return Number((a - b).toFixed(3)).toString();
+        case '*':
+            return Number((a * b).toFixed(3)).toString();
+    }
 }
 
 const clearArray = a => a.filter(e => e != null && e !== '' && e !== ' ');
