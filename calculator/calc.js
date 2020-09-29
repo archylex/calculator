@@ -15,16 +15,16 @@ document.addEventListener('DOMContentLoaded', function() {
             entryNumber.value = '0';
             memNumber.value = '';
             isAnswer = false;
+            isPrefix = false;
+            brackets = 0;
         }
         
         if (!isNaN(key)) { 
             if (isAnswer) {
                 clearAll();
                 entryNumber.value = key;
-            } else {
-                entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
-                if (entryNumber.value === '-0') entryNumber.value = `-${key}`;
-            }
+            } else
+                entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value === '-0' ? `-${key}` : entryNumber.value + key;
         }
            
         switch (keyData) {
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /***************************************************************/
 /*                  Calculator Engine                          */
-/*                GNU GPL v.3 Archylex                         */
+/*                                                             */
 /***************************************************************/
 
 /*   Arithmetic operations   */
