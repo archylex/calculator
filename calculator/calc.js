@@ -21,8 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isAnswer) {
                 clearAll();
                 entryNumber.value = key;
-            } else 
+            } else {
                 entryNumber.value = entryNumber.value === '0' ? key : entryNumber.value + key;
+                if (entryNumber.value === '-0') entryNumber.value = `-${key}`;
+            }
         }
            
         switch (keyData) {
@@ -73,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case 'equal':
                 if (!isAnswer) {
+                    isAnswer = true;
                     memNumber.value += (entryNumber.value !== '0') ? entryNumber.value : '';
                     const npr = infixNotationToRPN(memNumber.value)
                     const res = computeRPN(npr);
@@ -81,8 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     else if (isNaN(res))
                         entryNumber.value = 'It\'s impossible!';
                     else
-                        entryNumber.value = res.toString();                
-                    isAnswer = true;
+                        entryNumber.value = res.toString();                                    
                 }
                 break;
             default:
